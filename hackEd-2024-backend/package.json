@@ -1,7 +1,7 @@
 {
-  "name": "hacked-2024",
+  "name": "hacked-2024-backend",
   "version": "1.0.0",
-  "description": "Project for hackEd 2024 Hackathon: Katie, Matt, Ethan, Fraser, Nolan",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
