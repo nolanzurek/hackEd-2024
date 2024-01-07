@@ -1,19 +1,26 @@
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 import { Select, MenuItem, InputLabel } from "@mui/material";
 
 import "leaflet/dist/leaflet.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchTableData, TableData } from "../lib/supabase";
+
 
 const MapView = () => {
   const [selectedOption, setSelectedOption] = useState("Any Neighbourhood");
+  const [parkMarkers, setParkMarkers] = useState<TableData<'Parks'>[]>([]);
 
   const handleOptionChange = (event: any) => {
     setSelectedOption(event.target.value);
   };
 
   const neighbourhoods = ["Any Neighbourhood", "option1", "option2", "option3"];
+
+  useEffect(() => {
+    fetchTableData('Parks').then(setParkMarkers);
+  }, []);
 
   return (
     <>
@@ -43,11 +50,13 @@ const MapView = () => {
           url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           // url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
         />
-        {/* <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker> */}
+        {!!parkMarkers.length && parkMarkers.map((marker) =>
+          <Marker key={marker.id} position={[marker.LATITUDE, marker.LONGITUDE]}>
+            <Popup>
+              {marker.COMMON_NAME || 'An Unnamed Park'}
+            </Popup>
+          </Marker>
+        )}
       </MapContainer>
     </>
   );
