@@ -31,7 +31,7 @@ const App = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: "#004a14" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -43,9 +43,8 @@ const App = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              My App
+              Edmonton Sustainability Map
             </Typography>
-            <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
         <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>

@@ -47,6 +47,83 @@ const MapView = () => {
 
   const [selectedOption, setSelectedOption] = useState("Any Neighbourhood");
 
+  const neighbourhoodsHardcoded = [
+    "Abbottsfield",
+    "Alberta Avenue",
+    "Argyll",
+    "Aspen Gardens",
+    "Athlone",
+    "Avonmore",
+    "Balwin",
+    "Bellevue",
+    "Belvedere",
+    "Blatchford",
+    "Bonnie Doon",
+    "Calder",
+    "Calgary Trail North",
+    "Calgary Trail South",
+    "Capilano",
+    "Crestwood",
+    "Cromdale",
+    "Delton",
+    "Delwood",
+    "Dovercourt",
+    "Duggan",
+    "Eastwood",
+    "Edmonton Northlands",
+    "Elmwood Park",
+    "Empire Park",
+    "Forest Heights",
+    "Fulton Place",
+    "Glengarry",
+    "Glenora",
+    "Gold Bar",
+    "Grandview Heights",
+    "Greenfield",
+    "Grovenor",
+    "Highlands",
+    "Holyrood",
+    "Idylwylde",
+    "Inglewood",
+    "Kenilworth",
+    "Kensington",
+    "Killarney",
+    "King Edward Park",
+    "Lansdowne",
+    "Lauderdale",
+    "Laurier Heights",
+    "Lendrum Place",
+    "Malmo Plains",
+    "McQueen",
+    "Montrose",
+    "Newton",
+    "North Glenora",
+    "Ottewell",
+    "Parkdale",
+    "Parkview",
+    "Patricia Heights",
+    "Pleasantview",
+    "Prince Charles",
+    "Prince Rupert",
+    "Quesnell Heights",
+    "Rideau Park",
+    "Rosslyn",
+    "Royal Gardens",
+    "Rundle Heights",
+    "Sherbrooke",
+    "Spruce Avenue",
+    "Strathcona",
+    "Strathearn",
+    "Terrace Heights",
+    "University of Alberta Farm",
+    "Virginia Park",
+    "Wellington",
+    "Westbrook Estates",
+    "Westmount",
+    "Westwood",
+    "Woodcroft",
+  ];
+
   const handleOptionChange = (event: any) => {
     setSelectedOption(event.target.value);
   };
@@ -77,13 +154,17 @@ const MapView = () => {
         }}
         variant="outlined"
       >
-        {neighbourhoods.map((neighbourhood) => {
-          return (
-            <MenuItem value={neighbourhood}>
-              {neighbourhood.NEIGHBOURHOOD_NAME}
-            </MenuItem>
-          );
-        })}
+        {neighbourhoods.length > 0
+          ? neighbourhoods.map((neighbourhood) => {
+              return (
+                <MenuItem value={neighbourhood}>
+                  {neighbourhood.NEIGHBOURHOOD_NAME}
+                </MenuItem>
+              );
+            })
+          : neighbourhoodsHardcoded.map((neighbourhood) => {
+              return <MenuItem value={neighbourhood}>{neighbourhood}</MenuItem>;
+            })}
       </Select>
       <MapContainer
         center={[53.5280968, -113.5276029]}
