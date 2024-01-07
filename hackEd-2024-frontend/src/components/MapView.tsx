@@ -140,6 +140,8 @@ const MapView = () => {
     fetchTableData("trees").then(setTreeMarkers);
   }, []);
 
+  const [mode, setMode] = useState("light");
+
   return (
     <>
       <Select
@@ -166,6 +168,24 @@ const MapView = () => {
               return <MenuItem value={neighbourhood}>{neighbourhood}</MenuItem>;
             })}
       </Select>
+      <Select
+        value={mode}
+        onChange={(event) => {
+          setMode(event.target.value);
+        }}
+        style={{
+          position: "absolute",
+          top: "9.5rem",
+          right: "1rem",
+          zIndex: 1000,
+          background: "white",
+        }}
+        variant="outlined"
+        defaultValue={"Light"}
+      >
+        <MenuItem value="dark">Dark</MenuItem>
+        <MenuItem value="light">Light</MenuItem>
+      </Select>
       <MapContainer
         center={[53.5280968, -113.5276029]}
         zoom={13}
@@ -173,8 +193,11 @@ const MapView = () => {
         style={{ width: "100%", height: "calc(100vh - 4rem)" }}
       >
         <TileLayer
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-          //   url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
+          url={
+            mode === "light"
+              ? "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+              : "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
+          }
         />
         {!!parkMarkers.length &&
           parkMarkers.map((marker) => (
