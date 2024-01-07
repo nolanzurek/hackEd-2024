@@ -10,8 +10,14 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemButton from "@mui/material/ListItemButton";
+
+import MapIcon from "@mui/icons-material/Map"; // Import the MapIcon from Material-UI
+import PollIcon from "@mui/icons-material/Poll"; // Import the ClipboardIcon from Material-UI
 
 import MapView from "./components/MapView.tsx";
+import IntakeForm from "./components/IntakeForm.tsx";
 
 const App = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -20,43 +26,60 @@ const App = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const [view, setView] = useState("map");
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer}
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            My App
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-      <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
-        <List>
-          <ListItem button>
-            <ListItemText primary="Item 1" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Item 2" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Item 3" />
-          </ListItem>
-        </List>
-      </Drawer>
-      {/* BEGIN: main content slot */}
-      {/* Replace this comment with your main content */}
-      <MapView />
-      {/* END: main content slot */}
-    </Box>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer}
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              My App
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+        <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
+          <List>
+            <ListItemButton onClick={() => setView("form")}>
+              <ListItem>
+                <ListItemIcon>
+                  <PollIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Intake Form"
+                  secondary="Describe your sustainability priorities"
+                />
+              </ListItem>
+            </ListItemButton>
+            <ListItemButton onClick={() => setView("map")}>
+              <ListItem>
+                <ListItemIcon>
+                  <MapIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Map View"
+                  secondary="View sustainability attractions"
+                />
+              </ListItem>
+            </ListItemButton>
+          </List>
+        </Drawer>
+        {/* BEGIN: main content slot */}
+        {/* Replace this comment with your main content */}
+        {/* END: main content slot */}
+      </Box>
+      <main>{view == "map" ? <MapView /> : <IntakeForm></IntakeForm>}</main>
+    </>
   );
 };
 
