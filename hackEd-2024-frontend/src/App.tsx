@@ -15,6 +15,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 
 import MapIcon from "@mui/icons-material/Map"; // Import the MapIcon from Material-UI
 import PollIcon from "@mui/icons-material/Poll"; // Import the ClipboardIcon from Material-UI
+import InfoIcon from "@mui/icons-material/Info"; // Import the InfoIcon from Material-UI
 
 import MapView from "./components/MapView.tsx";
 import IntakeForm from "./components/IntakeForm.tsx";
@@ -68,6 +69,20 @@ const App = () => {
                 <ListItemText
                   primary="Map View"
                   secondary="View sustainability attractions"
+                />
+              </ListItem>
+            </ListItemButton>
+            <ListItemButton
+              onClick={() => setView("about")}
+              href="https://devpost.com/software/edmonton-sustainability-map"
+            >
+              <ListItem>
+                <ListItemIcon>
+                  <InfoIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="About"
+                  secondary="Learn more about the project"
                 />
               </ListItem>
             </ListItemButton>
