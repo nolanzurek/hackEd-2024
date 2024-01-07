@@ -78,7 +78,7 @@ const App = () => {
         {/* Replace this comment with your main content */}
         {/* END: main content slot */}
       </Box>
-      <main>{view == "map" ? <MapView /> : <IntakeForm></IntakeForm>}</main>
+      {view == "map" ? <MapView /> : <IntakeForm></IntakeForm>}
     </>
   );
 };
