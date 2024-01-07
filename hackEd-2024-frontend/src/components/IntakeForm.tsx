@@ -25,67 +25,69 @@ const IntakeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Box mb={2}>
-        <Typography variant="h6">Question 1: Bike Locks</Typography>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={bikeLocks}
-                onChange={(e) => setBikeLocks(e.target.checked)}
-              />
-            }
-            label="Do you find bike locks important?"
-          />
-        </FormGroup>
-      </Box>
-      <Box mb={2}>
-        <Typography variant="h6">Question 2: Greenspace</Typography>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={greenspace}
-                onChange={(e) => setGreenspace(e.target.checked)}
-              />
-            }
-            label="Do you find greenspace important?"
-          />
-        </FormGroup>
-      </Box>
-      <Box mb={2}>
-        <Typography variant="h6">Question 3: Trees</Typography>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={trees}
-                onChange={(e) => setTrees(e.target.checked)}
-              />
-            }
-            label="Do you find trees important?"
-          />
-        </FormGroup>
-      </Box>
-      <Box mb={2}>
-        <Typography variant="h6">Question 4: Transit</Typography>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={transit}
-                onChange={(e) => setTransit(e.target.checked)}
-              />
-            }
-            label="Do you find transit important?"
-          />
-        </FormGroup>
-      </Box>
-      <Button type="submit" variant="contained" color="primary">
-        Submit
-      </Button>
-    </form>
+    <main>
+      <form onSubmit={handleSubmit}>
+        <Box mb={2}>
+          <Typography variant="h6">Question 1: Bike Locks</Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={bikeLocks}
+                  onChange={(e) => setBikeLocks(e.target.checked)}
+                />
+              }
+              label="Do you find bike locks important?"
+            />
+          </FormGroup>
+        </Box>
+        <Box mb={2}>
+          <Typography variant="h6">Question 2: Greenspace</Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={greenspace}
+                  onChange={(e) => setGreenspace(e.target.checked)}
+                />
+              }
+              label="Do you find greenspace important?"
+            />
+          </FormGroup>
+        </Box>
+        <Box mb={2}>
+          <Typography variant="h6">Question 3: Trees</Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={trees}
+                  onChange={(e) => setTrees(e.target.checked)}
+                />
+              }
+              label="Do you find trees important?"
+            />
+          </FormGroup>
+        </Box>
+        <Box mb={2}>
+          <Typography variant="h6">Question 4: Transit</Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={transit}
+                  onChange={(e) => setTransit(e.target.checked)}
+                />
+              }
+              label="Do you find transit important?"
+            />
+          </FormGroup>
+        </Box>
+        <Button type="submit" variant="contained" color="primary">
+          Submit
+        </Button>
+      </form>
+    </main>
   );
 };
 
