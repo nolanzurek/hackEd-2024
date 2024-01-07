@@ -25,19 +25,19 @@ const MapView = () => {
   const [bikeRackMarkers, setBikeRackMarkers] = useState<
     TableData<"BikeRacksAndRepairStands">[]
   >([]);
-  const [neighbourhoodMarkers, setNeighbourhoodMarkers] = useState<
+  const [neighbourhoods, setNeighbourhoods] = useState<
     TableData<"Neighbourhoods">[]
   >([]);
-  const [propertyAssessmentMarkers, setPropertyAssessmentMarkers] = useState<
+  const [propertyAssessments, setPropertyAssessments] = useState<
     TableData<"PropertyAssessments">[]
   >([]);
   const [rainfallGaugeMarkers, setRainfallGaugeMarkers] = useState<
     TableData<"RainfallGauge">[]
   >([]);
-  const [trafficDisruptionMarkers, setTrafficDisruptionMarkers] = useState<
+  const [trafficDisruptions, setTrafficDisruptions] = useState<
     TableData<"TrafficDisruptions">[]
   >([]);
-  const [vegetationAreaMarkers, setVegetationAreaMarkers] = useState<
+  const [vegetationAreas, setVegetationAreas] = useState<
     TableData<"VegetationAreasNaturalized">[]
   >([]);
   const [busStopMarkers, setBusStopMarkers] = useState<
@@ -51,16 +51,14 @@ const MapView = () => {
     setSelectedOption(event.target.value);
   };
 
-  const neighbourhoods = ["Any Neighbourhood", "option1", "option2", "option3"];
-
   useEffect(() => {
     fetchTableData("Parks").then(setParkMarkers);
     fetchTableData("BikeRacksAndRepairStands").then(setBikeRackMarkers);
-    fetchTableData("Neighbourhoods").then(setNeighbourhoodMarkers);
-    fetchTableData("PropertyAssessments").then(setPropertyAssessmentMarkers);
+    fetchTableData("Neighbourhoods").then(setNeighbourhoods);
+    fetchTableData("PropertyAssessments").then(setPropertyAssessments);
     fetchTableData("RainfallGauge").then(setRainfallGaugeMarkers);
-    fetchTableData("TrafficDisruptions").then(setTrafficDisruptionMarkers);
-    fetchTableData("VegetationAreasNaturalized").then(setVegetationAreaMarkers);
+    fetchTableData("TrafficDisruptions").then(setTrafficDisruptions);
+    fetchTableData("VegetationAreasNaturalized").then(setVegetationAreas);
     fetchTableData("busStopsByLandmark").then(setBusStopMarkers);
     fetchTableData("trees").then(setTreeMarkers);
   }, []);
