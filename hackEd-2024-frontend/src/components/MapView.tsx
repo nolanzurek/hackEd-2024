@@ -78,7 +78,11 @@ const MapView = () => {
         variant="outlined"
       >
         {neighbourhoods.map((neighbourhood) => {
-          return <MenuItem value={neighbourhood}>{neighbourhood}</MenuItem>;
+          return (
+            <MenuItem value={neighbourhood}>
+              {neighbourhood.NEIGHBOURHOOD_NAME}
+            </MenuItem>
+          );
         })}
       </Select>
       <MapContainer
